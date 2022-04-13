@@ -24,7 +24,7 @@ router.get('/:id', (req, res) => {
     Books.findById(req.params.id)
     .then(bookFound => {
         console.log(bookFound)
-        res.render()
+        res.json({seedBooks})
     })
     .catch(err => {
         console.log('err', err)
@@ -37,7 +37,7 @@ router.put('/books/:id', (req, res) => {
     Books.findByIdAndUpdate(req.params.id, {new: true})
     .then(updatedBooks => {
         console.log(updatedBooks)
-        res.redirect('/books')
+        res.redirect(`/books/${req.params.id}`)
     })
     .catch(err => {
         console.log('err', err)
